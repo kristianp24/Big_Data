@@ -1,0 +1,34 @@
+Users.txt
+o Users.txt is a textual file containing information about the users who organized
+or participated in meetings managed by PoliMeeting. There is one line for each
+user and the total number of users is aprox 100. This file is not so large
+and you cannot suppose the content of Users.txt can be stored in one inmemory variable.
+o Each line of Users.txt has the following format
+ UID,Name,Surname,Country,PricingPlan
+where UID is the user’s unique identifier, Name and Surname are his/her
+name and surname, respectively, Country is the country where he/she
+lives, and PricingPlan is the type of pricing plan (free, business, etc.).
+ For example, the following line
+User1000,Mario,Rossi,Italian,Business
+means that the name and surname of the user with identifier User1000
+are Mario and Rossi, respectively, and he is Italian. He has subscribed to
+a Business pricing plan.
+
+MapReduce and Hadoop problem
+
+The managers of PoliMeeting are interested in performing some analyses about the pricing
+plans.
+Design a single application, based on MapReduce and Hadoop, and write the
+corresponding Java code, to address the following point:
+1. Countries where all users have a free pricing plan. The application selects the countries
+where 100% of their users have a free pricing plan (PrincingPlan=‘free’). The selected
+countries and the number of users for each of those countries are stored in the output
+HDFS folder.
+Output format (one line per each selected country):
+country, number of users for that country
+Suppose that the input is Users.txt and has been already set. Suppose that also the name
+of the output folder has been already set.
+ Write only the content of the Mapper and Reducer classes (map and reduce methods.
+setup and cleanup if needed). The content of the Driver must not be reported.
+ Use the following two specific multiple-choice questions (Exercises 1.2 and 1.3) to
+specify the number of instances of the reducer class for each job.

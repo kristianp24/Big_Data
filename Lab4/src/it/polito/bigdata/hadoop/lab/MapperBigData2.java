@@ -17,12 +17,6 @@ class MapperBigData2 extends Mapper<
                     Text,         // Input value type
                     Text,         // Output key type
                     IntWritable> {// Output value type
-    TopKVector<WordCountWritable> vectorTop100;
-
-    @Override
-    protected void setup(Context context) throws IOException, InterruptedException {
-         vectorTop100 = new TopKVector<>(100);
-   }
     
     protected void map(
             LongWritable key,   // Input key type
@@ -30,15 +24,5 @@ class MapperBigData2 extends Mapper<
             Context context) throws IOException, InterruptedException {
 
     		/* Implement the map method */ 
-            String[] line = value.toString().split("\\s+");
-            WordCountWritable wordCountWritable = new WordCountWritable(line[0], Integer.parseInt(line[1]));
-            vectorTop100.updateWithNewElement(wordCountWritable);
     }
-
-    @Override
-    protected void cleanup(Context context) throws IOException, InterruptedException {
-        for(WordCountWritable obiect: vectorTop100.getLocalTopK()){
-            context.write(new Text(obiect.getWord()), new IntWritable(obiect.getCount()));
-        }
-   }
 }

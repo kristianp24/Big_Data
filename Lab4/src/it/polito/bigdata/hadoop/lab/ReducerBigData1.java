@@ -24,14 +24,6 @@ class ReducerBigData1 extends Reducer<
         Context context) throws IOException, InterruptedException {
 
 		/* Implement the reduce method */
-        int sum = 0;
-        for (IntWritable value : values){
-            sum =  sum + value.get();
-        }
-
-        context.write(key, new IntWritable(sum));
-        
-
     	
     }
 }

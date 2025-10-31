@@ -19,34 +19,10 @@ class MapperBigData1 extends Mapper<
                     IntWritable> {// Output value type
     
     protected void map(
-        
             LongWritable key,   // Input key type
             Text value,         // Input value type
             Context context) throws IOException, InterruptedException {
 
     		/* Implement the map method */ 
-            String[] line = value.toString().split(",");
-            String pair;
-            for (int i = 0; i < line.length; i++){
-                
-                if (line[i].startsWith("B")){
-                    if (i == line.length - 1){
-                    break;
-                    }
-                    String word1 = line[i];
-                    String word2 = line[i+1];
-                    if (word1.compareTo(word2) < 0){
-                         pair = word1 + "," + word2;
-                    }
-                    else{
-                         pair = word2 + "," + word1;
-                    }
-                    context.write(new Text(pair), new IntWritable(1));
-                    
-                    
-                }
-                
-            } 
-            
     }
 }

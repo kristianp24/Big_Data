@@ -17,6 +17,12 @@ class ReducerBigData2 extends Reducer<
                 Text,           // Output key type
                 IntWritable> {  // Output value type
     
+    TopKVector<WordCountWritable> top100_global;
+    
+    protected void setup(Context context) throws IOException, InterruptedException {
+        top100_global=new TopKVector<>(100);
+    }
+
     @Override
     protected void reduce(
         Text key, // Input key type
@@ -24,6 +30,24 @@ class ReducerBigData2 extends Reducer<
         Context context) throws IOException, InterruptedException {
 
 		/* Implement the reduce method */
-    	
+        //top 100 global
+        int suma=0;
+        
+       // WordCountWritable cuplu= new WordCountWritable(key.toString() , values[0])
+
+        for(IntWritable value:values){
+            suma+= value.get();
+        }
+
+        WordCountWritable cuplu=new WordCountWritable(key.toString(),suma);
+
+        top100_global.updateWithNewElement(cuplu);
     }
+    @Override
+    protected void cleanup(Context context) throws IOException, InterruptedException {
+        for(WordCountWritable value:top100_global.getLocalTopK()){
+            context.write(new Text(value.getWord()), new IntWritable(value.getCount()));
+        }
+
+   }
 }

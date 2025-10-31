@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.Reducer;
  */
 
 /* Set the proper data types for the (key,value) pairs */
-class ReducerBigData1 extends Reducer<
+class ReducerBigData2 extends Reducer<
                 Text,           // Input key type
                 IntWritable,    // Input value type
                 Text,           // Output key type
@@ -24,14 +24,6 @@ class ReducerBigData1 extends Reducer<
         Context context) throws IOException, InterruptedException {
 
 		/* Implement the reduce method */
-        int sum = 0;
-        for (IntWritable value : values){
-            sum =  sum + value.get();
-        }
-
-        context.write(key, new IntWritable(sum));
-        
-
     	
     }
 }
