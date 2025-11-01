@@ -1,0 +1,32 @@
+The managers of BigEnergy want to analyze the distribution of the energy efficiency
+classes of buildings based on their city and year of construction. Design a MapReduce
+application and write the corresponding Java code to address the following point:
+ Most frequent energy efficiency class by city and year of construction.
+For each (city, year of construction) pair, the application must identify the most
+frequent energy efficiency class (i.e., the one that appears the highest number of
+times) among the buildings in that group. In case of a tie in the count, the energy
+class that comes first in alphabetical order must be chosen.
+Each line in the output file must have the following format:
+City,YearOfConstruction,MostFrequentEnergyClass
+Note that the number of distinct values assumed by EnergyEfficiencyClass is seven, i.e., it
+is a small value
+
+Buildings.csv -> Gemini generated teh data in this repo!!
+o This file contains descriptive information for each building. Each line in this file
+corresponds to a single building.
+o Format:
+BuildingID,City,Country,SquareMeters,Type,Year,EnergyEfficiencyClass
+o BuildingID: a unique identifier for the building (String).
+o City: the city where the building is located (String).
+o Country: the country where the building is located (String).
+o SquareMeters: the total floor area of the building in square meters (Integer).
+o Type: the type of building indicating its primary use, e.g., "Residential",
+"Commercial", "Industrial" (String).
+o Year: the year the building was constructed (Integer).
+o EnergyEfficiencyClass: the energy efficiency rating of the building, i.e., "A", "B",
+"C", “D”, “E”, “F”, “G” (String).
+o Example:
+ B_1001,Turin,Italy,120,Residential,1985,C
+ B_1002,Lyon,France,200,Commercial,2010,A
+ B_1003,Turin,Italy,50,Residential,1950,F
+
