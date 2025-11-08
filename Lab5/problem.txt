@@ -1,0 +1,21 @@
+Task 1
+The first filter you should implement is the following:
+• Keep only the lines containing words that start with the prefix “ho”
+The returned RDD contains the set of lines (word\tfreq) that satisfy the filtering operation.
+Print on the standard output the following statistics, based on the content of the RDD
+returned by the filtering operation:
+• The number of selected lines
+• The maximum frequency (maxfreq) among the ones of the selected lines (i.e., the
+maximum value of freq in the lines obtained by applying the filter).
+
+Task 2
+Extend the previous application. Specifically, in the second part of your application, among
+the lines selected by the first filter, you have to apply another filter to select only the most
+frequent words. Specifically, your application must select those lines that contain words with
+a frequency (freq) greater than 80% of the maximum frequency (maxfreq) computed before.
+Hence, implement the following filter:
+• Keep only the lines with a frequency freq greater than 0.8*maxfreq.
+Finally, perform the following operations on the selected lines (the ones selected by applying
+both filters):
+• Count the number of selected lines and print this number on the standard output
+• Save the selected words (without frequency) in an output folder (one word per line)
