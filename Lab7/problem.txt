@@ -1,0 +1,46 @@
+1) register.csv contains the historical information about the number of used and free slots
+for ~3000 stations from May 2008 to September 2008. Each line of register.csv
+corresponds to one reading about the situation of one station at a specific timestamp.
+Each line has the following format:
+stationId\ttimestamp\tusedslots\tfreeslots
+where timestamp has the format date time
+For example, the line
+23 2008-05-15 19:01:00 5 13
+means that there were 5 used slots and 13 free slots at station 23 on May 15, 2008 at
+19:01:00.
+Pay attention that the first line of register.csv contains the header of the file. Moreover,
+some of the lines of register.csv contain wrong data due to temporary problems of
+the monitoring system. Specifically, some lines are characterized by used slots = 0 and
+free slots = 0. Those lines must be filtered before performing the analysis. 
+
+2) stations.csv contains the description of the stations. Each line of registers.csv has the
+following format:
+stationId\tlongitude\tlatitude\tname
+For example, the line
+1 2.180019 41.397978 Gran Via Corts Catalanes
+contains the information about station 1. The coordinates of station 1 are
+2.1800,41.397978 and its name is Gran Via Corts Catalanes.
+
+Task 1
+Write a single Spark application that identifies the most “critical” timeslot for each station.
+This analysis can support the planning of the rebalancing operations among stations.
+In this application, each combination “day of the week – hour” is a timeslot and is associated
+with all the readings associated with that combination, independently of the date. For
+instance, the timeslot “Wednesday - 15” corresponds to all the readings made on
+Wednesday from 15:00:00 to 15:59:59, independently of the date.
+A station Si is in the critical state in a specific timestamp if the number of free slots is equal
+to 0 (i.e., the station is full).
+The “criticality” of a station Si in the timeslot Tj is defined as
+𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑟𝑒𝑎𝑑𝑖𝑛𝑔𝑠 𝑤𝑖𝑡ℎ 𝑛𝑢𝑚. 𝑜𝑓 𝑓𝑟𝑒𝑒 𝑠𝑙𝑜𝑡 𝑒𝑞𝑢𝑎𝑙 𝑡𝑜 0 𝑓𝑜𝑟 𝑡ℎ𝑒 𝑝𝑎𝑖𝑟 (𝑆𝑖, 𝑇𝑗)
+𝑡𝑜𝑡𝑎𝑙 𝑛𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑟𝑒𝑎𝑑𝑖𝑛𝑔𝑠 𝑓𝑜𝑟 𝑡ℎ𝑒 𝑝𝑎𝑖𝑟 (𝑆𝑖, 𝑇𝑗)
+Write an application that:
+• Computes the criticality value for each pair (Si,Tj).
+• Selects only the pairs having a criticality value greater than or equal to a minimum
+criticality threshold. The minimum criticality threshold is an argument of the
+application.
+• Selects the most critical timeslot for each station (consider only timeslots with a
+criticality greater than or equal to the minimum criticality threshold). If there are two or
+more timeslots characterized by the highest criticality value for the same station,
+select only one of those timeslots. Specifically, select the one associated with the
+earliest hour. If also the hour is the same, consider the lexicographical order of the
+name of the week day. 
