@@ -1,0 +1,9 @@
+1. Products that decreased their total sales in 2021 with respect to the sales in 2019. The first
+part of this application considers only the years 2019 and 2021. It selects the Products with
+a total number of products sold in 2021 lower than the total number of products sold in
+2019. Store the selected Products in the first output folder (one product per output line).
+2. Most sold product(s) for each year. The second part of this application considers all input
+data. It selects, for each year, the product(s) associated with the highest total annual sales
+for that year. For each product and year, the total annual sales for that product is given by
+the sum of the number of products sold in all days of that year. Store the result in the
+second output folder, as pairs (year, ID of the most sold product for that year).
