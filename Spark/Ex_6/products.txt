@@ -1,0 +1,20 @@
+ID1,Galaxy S24 256GB Black,Smartphone
+ID2,iPhone 15 Pro 128GB,Smartphone
+ID3,MacBook Air M2,Laptop
+ID4,Dell XPS 13 Plus,Laptop
+ID5,Sony WH-1000XM5,Headphones
+ID6,iPad Air 5th Gen,Tablet
+ID7,Logitech MX Master 3S,Accessories
+ID8,Samsung Odyssey G9,Monitor
+ID9,Google Pixel 8,Smartphone
+ID10,HP Spectre x360,Laptop
+ID11,Kindle Paperwhite Signature,E-Reader
+ID12,Apple Watch Series 9,Wearable
+ID13,Garmin Fenix 7,Wearable
+ID14,Anker 737 Power Bank,Accessories
+ID15,USB-C Multi-port Hub,Accessories
+ID16,PlayStation 5 Console,Gaming
+ID17,Xbox Series X,Gaming
+ID18,Nintendo Switch OLED,Gaming
+ID19,GoPro Hero 12 Black,Camera
+ID20,DJI Mini 4 Pro,Drone
